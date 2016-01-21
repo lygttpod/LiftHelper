@@ -3,10 +3,12 @@ package com.allen.lifthelper.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.allen.lifthelper.R;
+import com.allen.lifthelper.view.ToolBarX;
 
 /**
  * 封装baseactivity基础类 包含动画效果和布局控制反转
@@ -15,11 +17,11 @@ import com.allen.lifthelper.R;
  */
 public abstract class BaseActivity extends AppCompatActivity {
     private RelativeLayout rlContent;
-
+    private Toolbar mToolbar;
+    private ToolBarX mToolBarX;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.AppTheme_NoActionBar);
         setContentView(R.layout.ac_baselayout);
         initView();
         View view = getLayoutInflater().inflate(getLayoutId(), rlContent, false);
@@ -31,6 +33,19 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     private void initView() {
         rlContent = (RelativeLayout) findViewById(R.id.rlContent);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+    }
+
+    public ToolBarX getToolbar(){
+        if (null ==mToolBarX ){
+            mToolBarX = new ToolBarX(mToolbar,this);
+        }
+        return mToolBarX;
+    }
+
+    public Toolbar getmToolbar(){
+        return mToolbar;
     }
 
     /**

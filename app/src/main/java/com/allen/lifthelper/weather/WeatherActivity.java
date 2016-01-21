@@ -1,13 +1,13 @@
-package com.allen.lifthelper.activity;
+package com.allen.lifthelper.weather;
 
 import android.os.Bundle;
 
-import com.allen.lifthelper.R;
+import com.allen.lifthelper.activity.BaseActivity;
 
 /**
- * Created by Allen on 16/1/20.
+ * Created by Allen on 2016/1/21.
  */
-public class DetailsActivity extends BaseActivity {
+public class WeatherActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,6 +15,6 @@ public class DetailsActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_main;
+        return 0;
     }
 }
