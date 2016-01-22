@@ -15,7 +15,9 @@ import com.allen.lifthelper.R;
 import com.allen.lifthelper.adapter.MyListAdapter;
 import com.allen.lifthelper.bean.ListDataBean;
 import com.allen.lifthelper.common.ListData;
+import com.allen.lifthelper.history.activity.HistortActivity;
 import com.allen.lifthelper.robot.activity.RobotActivity;
+import com.allen.lifthelper.wechatnews.activity.WechatNewsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +64,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         myListAdapter.setmOnItemClickListener(new MyListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                startActivity(new Intent(HomeActivity.this, RobotActivity.class));
+                setStartActivity(position);
             }
 
             @Override
@@ -72,6 +74,25 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         });
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(myListAdapter);
+    }
+
+    private void setStartActivity(int position) {
+        switch (listDataBeans.get(position).getTitle()) {
+            case "问答机器人":
+                startActivity(new Intent(HomeActivity.this, RobotActivity.class));
+                break;
+            case "历史上的今天":
+                startActivity(new Intent(HomeActivity.this, HistortActivity.class));
+                break;
+            case "天气预报":
+                startActivity(new Intent(HomeActivity.this, RobotActivity.class));
+                break;
+            case "微信精选":
+                startActivity(new Intent(HomeActivity.this, WechatNewsActivity.class));
+                break;
+
+        }
+
     }
 
     @Override
